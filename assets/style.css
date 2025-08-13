@@ -1,0 +1,126 @@
+:root {
+    --text-color: #E8D7B4;
+    --card-front-color: #1A1A2E;
+    --card-back-color: #B72126;
+    --background-color: #0F0F1A;
+}
+
+body {
+    background: var(--background-color) url('img/bg-desktop.webp');
+    font-family: 'Bai Jamjuree', sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 4rem;
+    gap: 3rem;
+}
+
+.cartao {
+    margin: 1rem;
+    height: 20rem;
+    flex-grow: 1;
+    flex-basis: calc(33% - 6rem);
+    perspective: 1000px;
+}
+
+.cartao__conteudo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    background-color: var(--card-front-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cartao.active .cartao__conteudo {
+    transform: rotateY(180deg);
+}
+
+.cartao__conteudo h3 {
+    color: var(--text-color);
+    text-align: left;
+    padding: 0.5rem;
+    position: absolute;
+    margin: 0.6rem;
+    border-radius: 0.6rem;
+    font-size: 1vw;
+    background-color: rgba(183, 33, 38, 0.7);
+}
+
+.cartao__conteudo__pergunta,
+.cartao__conteudo__resposta {
+    backface-visibility: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.cartao__conteudo__resposta {
+    transform: rotateY(180deg);
+    background-color: rgba(183, 33, 38, 0.2);
+    border: 4px solid var(--card-back-color);
+}
+
+.cartao__conteudo p {
+    margin-top: 1rem;
+    padding: 2rem;
+    font-size: 1.4vw;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    text-align: center;
+    font-size: 0.6rem;
+    margin: 0;
+}
+
+@media (max-width: 560px) {
+    body {
+        background: var(--background-color) url('img/bg-mobile.webp');
+    }
+    
+    .cartao {
+        flex: 1 0 calc(100% - 1rem);
+    }
+    
+    .cartao__conteudo h3 {
+        font-size: 3vw;
+    }
+    
+    .cartao__conteudo p {
+        font-size: 3.8vw;
+    }
+}
+
+@media (min-width: 561px) and (max-width: 1024px) {
+    body {
+        background: var(--background-color) url('img/bg-tablet.webp');
+    }
+}
